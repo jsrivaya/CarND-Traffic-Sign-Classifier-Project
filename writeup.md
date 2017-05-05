@@ -19,9 +19,9 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.jpg "Visualization"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
+[image1]: ./writeup/visualization.png "Visualization"
+[image2]: ./writeup/dataAugmentation1.png "Preprocessing methods example"
+[image3]: ./writeup/dataAugmentation2.png "Preprocessing methods example"
 [image4]: ./examples/placeholder.png "Traffic Sign 1"
 [image5]: ./examples/placeholder.png "Traffic Sign 2"
 [image6]: ./examples/placeholder.png "Traffic Sign 3"
@@ -34,38 +34,95 @@ The goals / steps of this project are the following:
 ---
 ###Writeup / README
 
-####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
-
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+Here is a link to my [project code](https://github.com/jsrivaya/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
 ###Data Set Summary & Exploration
 
-####1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
+I used python and numpy to calculate statistics on the dataset:
 
-I used the pandas library to calculate summary statistics of the traffic
-signs data set:
+* The size of training set is ? 34799
+* The size of the validation set is ? 4410
+* The size of test set is ? 12630
+* The shape of a traffic sign image is ? 32x32 RGB
+* The number of unique classes/labels in the data set is ? 43
 
-* The size of training set is ?
-* The size of the validation set is ?
-* The size of test set is ?
-* The shape of a traffic sign image is ?
-* The number of unique classes/labels in the data set is ?
 
 ####2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Here is an exploratory visualization of the data set. I have included a table generated in python where we can see the percentage of images for each class/label
+
+Type Image | Total Number | % in Training Set    | Sign Name
+---------- | ------------ | -----------------    | ---------
+0	   | 180	  | 0.517		 | Speed limit (20km/h)
+1	   | 1980	  | 5.690		 | Speed limit (30km/h)
+2	   | 2010	  | 5.776		 | Speed limit (50km/h)
+3	   | 1260	  | 3.621		 | Speed limit (60km/h)
+4	   | 1770	  | 5.086		 | Speed limit (70km/h)
+5	   | 1650	  | 4.742		 | Speed limit (80km/h)
+6	   | 360	  | 1.035		 | End of speed limit (80km/h)
+7	   | 1290	  | 3.707		 | Speed limit (100km/h)
+8	   | 1260	  | 3.621		 | Speed limit (120km/h)
+9	   | 1320	  | 3.793		 | No passing
+10	   | 1800	  | 5.173		 | No passing for vehicles over 3.5 metric tons
+11	   | 1170	  | 3.362		 | Right-of-way at the next intersection
+12	   | 1890	  | 5.431		 | Priority road
+13	   | 1920	  | 5.517		 | Yield
+14	   | 690	  | 1.983		 | Stop
+15	   | 540	  | 1.552		 | No vehicles
+16	   | 360	  | 1.035		 | Vehicles over 3.5 metric tons prohibited
+17	   | 990	  | 2.845		 | No entry
+18	   | 1080	  | 3.104		 | General caution
+19	   | 180	  | 0.517		 | Dangerous curve to the left
+20	   | 300	  | 0.862		 | Dangerous curve to the right
+21	   | 270	  | 0.776		 | Double curve
+22	   | 330	  | 0.948		 | Bumpy road
+23	   | 450	  | 1.293		 | Slippery road
+24	   | 240	  | 0.690		 | Road narrows on the right
+25	   | 1350	  | 3.879		 | Road work
+26	   | 540	  | 1.552		 | Traffic signals
+27	   | 210	  | 0.603		 | Pedestrians
+28	   | 480	  | 1.379		 | Children crossing
+29	   | 240	  | 0.690		 | Bicycles crossing
+30	   | 390	  | 1.121		 | Beware of ice/snow
+31	   | 690	  | 1.983		 | Wild animals crossing
+32	   | 210	  | 0.603		 | End of all speed and passing limits
+33	   | 599	  | 1.721		 | Turn right ahead
+34	   | 360	  | 1.035		 | Turn left ahead
+35	   | 1080	  | 3.104		 | Ahead only
+36	   | 330	  | 0.948		 | Go straight or right
+37	   | 180	  | 0.517		 | Go straight or left
+38	   | 1860	  | 5.345		 | Keep right
+39	   | 270	  | 0.776		 | Keep left
+40	   | 300	  | 0.862		 | Roundabout mandatory
+41	   | 210	  | 0.603		 | End of no passing
+42	   | 210	  | 0.603		 | End of no passing by vehicles over 3.5 metric tons
+---------- | ------------ | -----------------    | -----------------
+Total = 34799
+Total % = 100.000
 
 ![alt text][image1]
 
 ###Design and Test a Model Architecture
 
-####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
+I created a set of help functions to support the preprocessing and the trainning set augmentation.
+I followed [Pierre Sermanet and Yann LeCun](yann.lecun.org/exdb/publis/psgz/sermanet-ijcnn-11.ps.gz) paper on traffic sign recognition.
+For the preprocessing I do convert the image into YUV color space, apply equalize hist on channel Y, apply an INTER_LANCZOS4 normalization filter and convert it back to RGB. The image is also scaled down to 32x32 in case it's not. The INTER_LANCZOS4 normalization uses up to 8 pixels around to normalize the value of each pixel. I did try other normalization techniques but this one looks like providing the better results.
+
+One step that produces significant improvements for validation accuracy is the data set augmentation. As mentioned before I created help methods to do this. Amon those are, bluring the image, rotating left and right on it's center, rotating the image using an image corner, displacing the image, scaling the image down and refill it, converting it to YUP color space and converting it to grayscale. The dataset was augmented from 34799 images to 382789 images. This can cause overfitting but we will show how we prevent that to happen.
+
+Technically training the CNN using grayscale should better results. The reason for this is that the CNN would have less channels to learn and would be able to generalize better. In my case I did try it but I wasn't able to get significant improvements. Other areas might have need improvements at that moment.
+
+Bellow there is a couple of examples of how the support methods for data augmentation work. As well as how the preprocess method transform an original image. For Image labeled 9 and 10 there is a significant improvement.
+
+![alt text][image2]
+
+![alt text][image3]
 
 As a first step, I decided to convert the images to grayscale because ...
 
 Here is an example of a traffic sign image before and after grayscaling.
 
-![alt text][image2]
+![alt text][image3]
 
 As a last step, I normalized the image data because ...
 
