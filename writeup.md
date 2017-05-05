@@ -172,26 +172,26 @@ Here are five German traffic signs. Original image, preprocessed image and expec
 Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| Certinity
-|:---------------------:|:---------------------------------------------:| :-------
-| No passing      	          	| No passing for vehicules over 3.5 ones| 51%
-| Narrow at both sides     			| Narrow on right 									    | 99.9%
-| Wild Animal Crossing					| Wild Animal Crossing									| 99.9%
-| Pedestrians	      	         	| Pedestrians					 			            | 99.9%
-| Right-of-Way 			            | Right-of-Way      							      | 91.1%
-| General Caution 			        | General Caution      							    | 61.6%
+|:---------------------:|:-----------------------------------------------:| :-------
+| No passing      	          	| No passing for vehicules over 3.5 tones | 51%
+| Narrow at both sides     			| Narrow on right 									      | 99.9%
+| Wild Animal Crossing					| Wild Animal Crossing									  | 99.9%
+| Pedestrians	      	         	| Pedestrians					 			              | 99.9%
+| Right-of-Way 			            | Right-of-Way      							        | 91.1%
+| General Caution 			        | General Caution      							      | 61.6%
 
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+The code for making predictions on my final model is located in the 2nd to last cell of the Ipython notebook.
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+For the first image, the model is relatively sure that this is a No passing sign (probability of 0.51). It is in fact a no passing sign, but not exactly the one that it predicted. The top five soft max probabilities were
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
+| .51         			    | No passing for vehicules over 3.5 tones   									                | 
+| .20     				      | No passing 										|
+| .15					          | Speed limit 50kmh										|
+| .02	      		      	| Turn right ahead					 				|
+| .01				            | Roundabout mandatory     							|
 
 
 For the second image ... 
