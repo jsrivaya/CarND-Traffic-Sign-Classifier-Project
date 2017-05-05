@@ -157,11 +157,6 @@ If an iterative approach was chosen:
 
 ###Test a Model on New Images
 
-Here are five German traffic signs that I found on the web:
-
-![alt text][image4]
-![alt text][image5]
-
 The model was able to recognize 4/6 images.
 
 * The first image might be difficult to classify because the training set image is a really hard one to train on. Nevertheless the model was able to identify the image as the second most probable image.
@@ -169,21 +164,22 @@ The model was able to recognize 4/6 images.
 * The next images 3 images should not be any hard to identify and it is not, the accuracy is impresively high, ~99.9%.
 * The last image included in the set is a highly covered in snow image. The model is capable of recognizing the image with a 61% accuracy.
 
+Here are five German traffic signs. Original image, preprocessed image and expected image based on the validation set.
+
+![alt text][image4]
+![alt text][image5]
+
 Here are the results of the prediction:
 
-| Image			        |     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| No passing      		| No passing for vehicules over 3.5 ones   									| 
-| Narrow at the right     			| Narrow on both 										|
-| Wild Animal Crossing					| Wild Animal Crossing											|
-| Pedestrians	      		| Pedestrians					 				|
-| Right-of-Way 			| Right-of-Way      							|
-| General Caution 			| General Caution      							|
+| Image			        |     Prediction	        					| Certinity
+|:---------------------:|:---------------------------------------------:| :-------
+| No passing      	          	| No passing for vehicules over 3.5 ones| 51%
+| Narrow at both sides     			| Narrow on right 									    | 99.9%
+| Wild Animal Crossing					| Wild Animal Crossing									| 99.9%
+| Pedestrians	      	         	| Pedestrians					 			            | 99.9%
+| Right-of-Way 			            | Right-of-Way      							      | 91.1%
+| General Caution 			        | General Caution      							    | 61.6%
 
-
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
-
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
