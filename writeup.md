@@ -19,14 +19,14 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/visualization.jpg "Visualization"
-[image2]: ./examples/grayscale.jpg "Grayscaling"
-[image3]: ./examples/random_noise.jpg "Random Noise"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
+[image1]: ./writeup/visualization.png "Visualization"
+[image2]: ./writeup/dataAugmentation1.png "Preprocessing methods example"
+[image3]: ./writeup/dataAugmentation2.png "Preprocessing methods example"
+[image4]: ./writeup/image_1.png "Traffic Sign 1"
+[image5]: ./writeup/image_2.png "Traffic Sign 2"
+[image6]: ./writeup/image_3.png "Traffic Sign 3"
+[image7]: ./writeup/image_4.png "Traffic Sign 4"
+[image8]: ./writeup/image_5.png "Traffic Sign 5"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -34,93 +34,129 @@ The goals / steps of this project are the following:
 ---
 ###Writeup / README
 
-####1. Provide a Writeup / README that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.
-
-You're reading it! and here is a link to my [project code](https://github.com/udacity/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
+Here is a link to my [project code](https://github.com/jsrivaya/CarND-Traffic-Sign-Classifier-Project/blob/master/Traffic_Sign_Classifier.ipynb)
 
 ###Data Set Summary & Exploration
 
-####1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.
+I used python and numpy to calculate statistics on the dataset:
 
-I used the pandas library to calculate summary statistics of the traffic
-signs data set:
+* The size of training set is ? 34799
+* The size of the validation set is ? 4410
+* The size of test set is ? 12630
+* The shape of a traffic sign image is ? 32x32 RGB
+* The number of unique classes/labels in the data set is ? 43
 
-* The size of training set is ?
-* The size of the validation set is ?
-* The size of test set is ?
-* The shape of a traffic sign image is ?
-* The number of unique classes/labels in the data set is ?
 
 ####2. Include an exploratory visualization of the dataset.
 
-Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
+Here is an exploratory visualization of the data set. I have included a table generated in python where we can see the percentage of images for each class/label
+
+Type Image | Total Number | % in Training Set    | Sign Name
+---------- | ------------ | -----------------    | ---------
+0	   | 180	  | 0.517		 | Speed limit (20km/h)
+1	   | 1980	  | 5.690		 | Speed limit (30km/h)
+2	   | 2010	  | 5.776		 | Speed limit (50km/h)
+3	   | 1260	  | 3.621		 | Speed limit (60km/h)
+4	   | 1770	  | 5.086		 | Speed limit (70km/h)
+5	   | 1650	  | 4.742		 | Speed limit (80km/h)
+6	   | 360	  | 1.035		 | End of speed limit (80km/h)
+7	   | 1290	  | 3.707		 | Speed limit (100km/h)
+8	   | 1260	  | 3.621		 | Speed limit (120km/h)
+9	   | 1320	  | 3.793		 | No passing
+10	   | 1800	  | 5.173		 | No passing for vehicles over 3.5 metric tons
+11	   | 1170	  | 3.362		 | Right-of-way at the next intersection
+12	   | 1890	  | 5.431		 | Priority road
+13	   | 1920	  | 5.517		 | Yield
+14	   | 690	  | 1.983		 | Stop
+15	   | 540	  | 1.552		 | No vehicles
+16	   | 360	  | 1.035		 | Vehicles over 3.5 metric tons prohibited
+17	   | 990	  | 2.845		 | No entry
+18	   | 1080	  | 3.104		 | General caution
+19	   | 180	  | 0.517		 | Dangerous curve to the left
+20	   | 300	  | 0.862		 | Dangerous curve to the right
+21	   | 270	  | 0.776		 | Double curve
+22	   | 330	  | 0.948		 | Bumpy road
+23	   | 450	  | 1.293		 | Slippery road
+24	   | 240	  | 0.690		 | Road narrows on the right
+25	   | 1350	  | 3.879		 | Road work
+26	   | 540	  | 1.552		 | Traffic signals
+27	   | 210	  | 0.603		 | Pedestrians
+28	   | 480	  | 1.379		 | Children crossing
+29	   | 240	  | 0.690		 | Bicycles crossing
+30	   | 390	  | 1.121		 | Beware of ice/snow
+31	   | 690	  | 1.983		 | Wild animals crossing
+32	   | 210	  | 0.603		 | End of all speed and passing limits
+33	   | 599	  | 1.721		 | Turn right ahead
+34	   | 360	  | 1.035		 | Turn left ahead
+35	   | 1080	  | 3.104		 | Ahead only
+36	   | 330	  | 0.948		 | Go straight or right
+37	   | 180	  | 0.517		 | Go straight or left
+38	   | 1860	  | 5.345		 | Keep right
+39	   | 270	  | 0.776		 | Keep left
+40	   | 300	  | 0.862		 | Roundabout mandatory
+41	   | 210	  | 0.603		 | End of no passing
+42	   | 210	  | 0.603		 | End of no passing by vehicles over 3.5 metric tons
+---------- | ------------ | -----------------    | -----------------
+Total = 34799
+Total % = 100.000
 
 ![alt text][image1]
 
 ###Design and Test a Model Architecture
 
-####1. Describe how you preprocessed the image data. What techniques were chosen and why did you choose these techniques? Consider including images showing the output of each preprocessing technique. Pre-processing refers to techniques such as converting to grayscale, normalization, etc. (OPTIONAL: As described in the "Stand Out Suggestions" part of the rubric, if you generated additional data for training, describe why you decided to generate additional data, how you generated the data, and provide example images of the additional data. Then describe the characteristics of the augmented training set like number of images in the set, number of images for each class, etc.)
+I created a set of help functions to support the preprocessing and the trainning set augmentation.
+I followed [Pierre Sermanet and Yann LeCun](yann.lecun.org/exdb/publis/psgz/sermanet-ijcnn-11.ps.gz) paper on traffic sign recognition.
+For the preprocessing I do convert the image into YUV color space, apply equalize hist on channel Y, apply an INTER_LANCZOS4 normalization filter and convert it back to RGB. The image is also scaled down to 32x32 in case it's not. The INTER_LANCZOS4 normalization uses up to 8 pixels around to normalize the value of each pixel. I did try other normalization techniques but this one looks like providing the better results.
 
-As a first step, I decided to convert the images to grayscale because ...
+One step that produces significant improvements for validation accuracy is the data set augmentation. As mentioned before I created help methods to do this. Amon those are, bluring the image, rotating left and right on it's center, rotating the image using an image corner, displacing the image, scaling the image down and refill it, converting it to YUP color space and converting it to grayscale. The dataset was augmented from 34799 images to 382789 images. This can cause overfitting but we will show how we prevent that to happen.
 
-Here is an example of a traffic sign image before and after grayscaling.
+Technically training the CNN using grayscale should better results. The reason for this is that the CNN would have less channels to learn and would be able to generalize better. In my case I did try it but I wasn't able to get significant improvements. Other areas might have need improvements at that moment.
+
+Bellow there is a couple of examples of how the support methods for data augmentation work. As well as how the preprocess method transform an original image. For Image labeled 9 and 10 there is a significant improvement.
 
 ![alt text][image2]
 
-As a last step, I normalized the image data because ...
-
-I decided to generate additional data because ... 
-
-To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
 ![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
-
-
-####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
 My final model consisted of the following layers:
 
-| Layer         		|     Description	        					| 
+| Layer         	      	|     Description	        				                 	| 
 |:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
-| RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
- 
+| Input         		      | 32x32x3 RGB image   							                   | 
+| Convolution 3x3     	 | 1x1 stride, same padding, outputs 32x32x64 	  |
+| RELU					             | Activation	                                 		|
+| Max pooling	      	   | Input = 28x28x6, 2x2 stride, Output = 14x14x6 |
+| Convolution 3x3	      | Output = 10x10x16.                   									|
+| RELU					             | Activation	                                 		|
+| Max pooling	      	   | Input = 10x10x16, 2x2 stride, Output = 5x5x16	|
+| Fully connected		     |                                      									|
+| Dropout        		     | 80% chances of retention        								     	|
+| Fully connected		     |                                      									|
+| Dropout        		     | 80% chances of retention             									|
+| Fully connected		     |                                      									|
 
 
-####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
+I did follow and interactive process to tune the model
 
-To train the model, I used an ....
-
-####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+* The model was trained using a batch size of 128, and a total of 50 EPOCHS.
+  I did try low number of epocs at the begining but realized that it would get better results with a larger number of EPOCHS. Increasing the EPOCHS to more than 50 would also produce and overfiting making the model stop learning and start producing worst results. 50 looked like the sweet point.
+* I kept using the AdamOptmizer although I did consider exploring others. That was definitly an area I should have explored more.
+* Reducing the learning rate to 0.001 does produce significant improvements in the model. This help the CNN to get out of local minimums and progress toward better errors.
+* Dropout Layers. I included two dropout layers between the flat layers. This technique was demostrated as very efficient. Specially with the large data set. I did try different dropout probabilities and although 0.5 and 0.5 did work at the begining it would drop too many features for the model to learn.
+* Regularization. I did follow [Cristina Escheau](https://chatbotslife.com/regularization-in-deep-learning-f649a45d6e0) post on Regularization for applying this technique. This was also demostrated very efficient to reduce the error and balance the weights. I did apply regularization only for the weights of the convolutional layers. I did follow a different technique previous to applying regularization that allowed me to get faster and actually better results. I reduced the standard deviation to 0.005 for the weights generation.
+* Biases of ones instead of zeros. This initialization accelerates the early stages of learning by providing the ReLUs with positive inputs. I did follow [Alex Krizhevsky Ilya Sutskever Geoffrey E. Hinton](http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf) paper.
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* training set accuracy of ? 95.8%
+* validation set accuracy of ? 95.8%
+* test set accuracy of ? 92.5%
 
 If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
-
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
- 
+* What was the first architecture that was tried and why was it chosen? I did try the original LeNet5 architecture. I did choose this because it looks like a basic simple model to get a baseline. I got up to 87% accuracy with default parameters.
+* What were some problems with the initial architecture? The initial architecture show issues as soon as I bumped up the training set. The learning rate was too high and the standard deviation for the weights was not helping either.
+* How was the architecture adjusted and why was it adjusted? I did include a couple of dropout layers. As mentioned before it did help to strenght the generalization of the model.
+* Which parameters were tuned? How were they adjusted and why? As mentioned before I used regularization to minimize the error, adding this to the optimizer. I did use regularization for the convolutional layers only. The learning rate was also reduce and the number of epocs increased.
+* What are some of the important design choices and why were they chosen? I did explain already the important and positive effects that Dropout and Regularization had in the model.
 
 ###Test a Model on New Images
 
