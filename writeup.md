@@ -22,11 +22,11 @@ The goals / steps of this project are the following:
 [image1]: ./writeup/visualization.png "Visualization"
 [image2]: ./writeup/dataAugmentation1.png "Preprocessing methods example"
 [image3]: ./writeup/dataAugmentation2.png "Preprocessing methods example"
-[image4]: ./examples/placeholder.png "Traffic Sign 1"
-[image5]: ./examples/placeholder.png "Traffic Sign 2"
-[image6]: ./examples/placeholder.png "Traffic Sign 3"
-[image7]: ./examples/placeholder.png "Traffic Sign 4"
-[image8]: ./examples/placeholder.png "Traffic Sign 5"
+[image4]: ./writeup/image_1.png "Traffic Sign 1"
+[image5]: ./writeup/image_2.png "Traffic Sign 2"
+[image6]: ./writeup/image_3.png "Traffic Sign 3"
+[image7]: ./writeup/image_4.png "Traffic Sign 4"
+[image8]: ./writeup/image_5.png "Traffic Sign 5"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
