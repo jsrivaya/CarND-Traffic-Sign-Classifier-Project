@@ -162,19 +162,23 @@ Here are five German traffic signs that I found on the web:
 ![alt text][image4]
 ![alt text][image5]
 
-The first image might be difficult to classify because ...
+The model was able to recognize 4/6 images.
 
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+* The first image might be difficult to classify because the training set image is a really hard one to train on. Nevertheless the model was able to identify the image as the second most probable image.
+* The second image is an image that is not in the set but that it is similar to one that is in the set, narrow on the right. The model was able to identify it as the most similar one.
+* The next images 3 images should not be any hard to identify and it is not, the accuracy is impresively high, ~99.9%.
+* The last image included in the set is a highly covered in snow image. The model is capable of recognizing the image with a 61% accuracy.
 
 Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| No passing      		| No passing for vehicules over 3.5 ones   									| 
+| Narrow at the right     			| Narrow on both 										|
+| Wild Animal Crossing					| Wild Animal Crossing											|
+| Pedestrians	      		| Pedestrians					 				|
+| Right-of-Way 			| Right-of-Way      							|
+| General Caution 			| General Caution      							|
 
 
 The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
