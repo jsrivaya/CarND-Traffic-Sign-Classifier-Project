@@ -118,24 +118,6 @@ Bellow there is a couple of examples of how the support methods for data augment
 
 ![alt text][image3]
 
-As a first step, I decided to convert the images to grayscale because ...
-
-Here is an example of a traffic sign image before and after grayscaling.
-
-![alt text][image3]
-
-As a last step, I normalized the image data because ...
-
-I decided to generate additional data because ... 
-
-To add more data to the the data set, I used the following techniques because ... 
-
-Here is an example of an original image and an augmented image:
-
-![alt text][image3]
-
-The difference between the original data set and the augmented data set is the following ... 
-
 
 ####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
 
@@ -147,24 +129,31 @@ My final model consisted of the following layers:
 | Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
 | RELU					|												|
 | Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
+| Convolution 3x3	    |       									|
+| Fully connected		|         									|
+| Softmax				|         									|
 |						|												|
 |						|												|
  
 
+* The model was trained using a batch size of 128, and a total of 50 EPOCHS.
+  I did try low number of epocs at the begining but realized that it would get better results with a larger number of EPOCHS. Increasing the EPOCHS to more than 50 would also produce and overfiting making the model stop learning and start producing worst results. 50 looked like the sweet point.
+* I kept using the AdamOptmizer although I did consider exploring others. That was definitly an area I should have explored more.
+* Reducing the learning rate to 0.001 does produce significant improvements in the model. This help the CNN to get out of local minimums and progress toward better errors.
+* Dropout Layers. I included two dropout layers between the flat layers. This technique was demostrated as very efficient. Specially with the large data set. I did try different dropout probabilities and although 0.5 and 0.5 did work at the begining it would drop too many features for the model to learn.
+* Regularization. I did follow [Cristina Escheau](https://chatbotslife.com/regularization-in-deep-learning-f649a45d6e0) post on Regularization for applying this technique. This was also demostrated very efficient to reduce the error and balance the weights. I did apply regularization only for the weights of the convolutional layers. I did follow a different technique previous to applying regularization that allowed me to get faster and actually better results. I reduced the standard deviation to 0.005 for the weights generation.
+* Biases of ones instead of zeros. This initialization accelerates the early stages of learning by providing the ReLUs with positive inputs. I did follow [Alex Krizhevsky Ilya Sutskever Geoffrey E. Hinton](http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf) paper.
 
 ####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
 
 To train the model, I used an ....
 
-####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+I did follow and interactive process to tune the model
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* training set accuracy of ? 95.8%
+* validation set accuracy of ? 95.8%
+* test set accuracy of ? 92.5%
 
 If an iterative approach was chosen:
 * What was the first architecture that was tried and why was it chosen?
