@@ -194,37 +194,37 @@ For the first image, the model is relatively sure that this is a No passing sign
 | .01				            | Roundabout mandatory     							|
 
 
-For the second image: 
+For the second image, the model is very sure that this is a narrow on the right. But this is an image that does not exist in the training. It is a narrow on both sides sign. All the other predictions are extremely close to zero.
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | .99         			    | Narrow on right | 
-| .0     			  	      | No passing 										|
-| .0					          | Speed limit 50kmh										|
-| .0	      		      	| Turn right ahead					 				|
-| .0				            | Roundabout mandatory     							|
+| .0     			  	      | Pedestrians 										|
+| .0					          | Right-of-way next intersection										|
+| .0	      		      	| Be aware of ice/snow					 				|
+| .0				            | Dangerous curve to the left     							|
 
-For the third image: 
+For the third image, the model is very sure that this is a 'Wild Animal Crossing' sign. And it is correct. All the other predictions are extremely close to zero.
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | .99         			    | Wild Animal Crossing | 
-| .00     				      | No passing 										|
-| .00					          | Speed limit 50kmh										|
-| .00	      		      	| Turn right ahead					 				|
-| .00				            | Roundabout mandatory     							|
+| .00     				      | Double curve 										|
+| .00					          | Slipery road										|
+| .00	      		      	| Be aware of ice/snow					 				|
+| .00				            | Bycicle crossing     							|
 
-For the fourth image: 
+For the fourth image, same as with previous image
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
 | .99         			    | Pedestrians | 
-| .00     				      | No passing 										|
-| .00					          | Speed limit 50kmh										|
-| .00	      		      	| Turn right ahead					 				|
-| .00				            | Roundabout mandatory     							|
+| .00     				      | Narrow on the right 										|
+| .00					          | General Caution										|
+| .00	      		      	| Right of way next intersection					 				|
+| .00				            | Traffic signal     							|
 
-For the fifth image: 
+For the fifth image, same as with previous image
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
@@ -234,7 +234,7 @@ For the fifth image:
 | .02	      		      	| Be aware of ice/snow					 				|
 | .00				            | Dangerous curv to the right     							|
 
-For the sixth image: 
+For the sixth image, the model is capable of recognizing the image despite the fact that the sign is almost covered by the snow. The model is relatively sure that this is the sign. And it is right
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
