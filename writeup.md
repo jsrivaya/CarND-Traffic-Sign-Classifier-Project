@@ -187,14 +187,62 @@ For the first image, the model is relatively sure that this is a No passing sign
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| .51         			    | No passing for vehicules over 3.5 tones   									                | 
+| .51         			    | No passing for vehicules over 3.5 tones | 
 | .20     				      | No passing 										|
 | .15					          | Speed limit 50kmh										|
 | .02	      		      	| Turn right ahead					 				|
 | .01				            | Roundabout mandatory     							|
 
 
-For the second image ... 
+For the second image: 
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .99         			    | Narrow on right | 
+| .0     			  	      | No passing 										|
+| .0					          | Speed limit 50kmh										|
+| .0	      		      	| Turn right ahead					 				|
+| .0				            | Roundabout mandatory     							|
+
+For the third image: 
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .99         			    | Wild Animal Crossing | 
+| .00     				      | No passing 										|
+| .00					          | Speed limit 50kmh										|
+| .00	      		      	| Turn right ahead					 				|
+| .00				            | Roundabout mandatory     							|
+
+For the fourth image: 
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .99         			    | Pedestrians | 
+| .00     				      | No passing 										|
+| .00					          | Speed limit 50kmh										|
+| .00	      		      	| Turn right ahead					 				|
+| .00				            | Roundabout mandatory     							|
+
+For the fifth image: 
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .91         			    | Right-of-Way | 
+| .04     				      | Pedestrians 										|
+| .02					          | Road narrows on the right										|
+| .02	      		      	| Be aware of ice/snow					 				|
+| .00				            | Dangerous curv to the right     							|
+
+For the sixth image: 
+
+| Probability         	|     Prediction	        					| 
+|:---------------------:|:---------------------------------------------:| 
+| .61         			    | General Caution | 
+| .38     				      | Childre Crossing 										|
+| .00					          | Bicycle Crossing										|
+| .00	      		      	| No vehicles					 				|
+| .00				            | Bumpy Road     							|
 
 ### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
 ####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
