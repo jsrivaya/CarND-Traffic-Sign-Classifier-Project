@@ -22,11 +22,8 @@ The goals / steps of this project are the following:
 [image1]: ./writeup/visualization.png "Visualization"
 [image2]: ./writeup/dataAugmentation1.png "Preprocessing methods example"
 [image3]: ./writeup/dataAugmentation2.png "Preprocessing methods example"
-[image4]: ./writeup/image_1.png "Traffic Sign 1"
-[image5]: ./writeup/image_2.png "Traffic Sign 2"
-[image6]: ./writeup/image_3.png "Traffic Sign 3"
-[image7]: ./writeup/image_4.png "Traffic Sign 4"
-[image8]: ./writeup/image_5.png "Traffic Sign 5"
+[image4]: ./writeup/testImages.png "Set of Traffic Signs"
+[image5]: ./writeup/expectedImages.png "Expected from the Training Set"
 
 ## Rubric Points
 ###Here I will consider the [rubric points](https://review.udacity.com/#!/rubrics/481/view) individually and describe how I addressed each point in my implementation.  
@@ -160,12 +157,10 @@ If an iterative approach was chosen:
 
 ###Test a Model on New Images
 
-####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
-
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![alt text][image4]
+![alt text][image5]
 
 The first image might be difficult to classify because ...
 
