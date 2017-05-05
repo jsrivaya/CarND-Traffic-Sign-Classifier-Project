@@ -118,9 +118,6 @@ Bellow there is a couple of examples of how the support methods for data augment
 
 ![alt text][image3]
 
-
-####2. Describe what your final model architecture looks like including model type, layers, layer sizes, connectivity, etc.) Consider including a diagram and/or table describing the final model.
-
 My final model consisted of the following layers:
 
 | Layer         	      	|     Description	        				                 	| 
@@ -138,7 +135,8 @@ My final model consisted of the following layers:
 | Dropout        		     | 80% chances of retention             									|
 | Fully connected		     |                                      									|
 
- 
+
+I did follow and interactive process to tune the model
 
 * The model was trained using a batch size of 128, and a total of 50 EPOCHS.
   I did try low number of epocs at the begining but realized that it would get better results with a larger number of EPOCHS. Increasing the EPOCHS to more than 50 would also produce and overfiting making the model stop learning and start producing worst results. 50 looked like the sweet point.
@@ -148,29 +146,17 @@ My final model consisted of the following layers:
 * Regularization. I did follow [Cristina Escheau](https://chatbotslife.com/regularization-in-deep-learning-f649a45d6e0) post on Regularization for applying this technique. This was also demostrated very efficient to reduce the error and balance the weights. I did apply regularization only for the weights of the convolutional layers. I did follow a different technique previous to applying regularization that allowed me to get faster and actually better results. I reduced the standard deviation to 0.005 for the weights generation.
 * Biases of ones instead of zeros. This initialization accelerates the early stages of learning by providing the ReLUs with positive inputs. I did follow [Alex Krizhevsky Ilya Sutskever Geoffrey E. Hinton](http://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf) paper.
 
-####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
-
-To train the model, I used an ....
-
-I did follow and interactive process to tune the model
-
 My final model results were:
 * training set accuracy of ? 95.8%
 * validation set accuracy of ? 95.8%
 * test set accuracy of ? 92.5%
 
 If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
-
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
- 
+* What was the first architecture that was tried and why was it chosen? I did try the original LeNet5 architecture. I did choose this because it looks like a basic simple model to get a baseline. I got up to 87% accuracy with default parameters.
+* What were some problems with the initial architecture? The initial architecture show issues as soon as I bumped up the training set. The learning rate was too high and the standard deviation for the weights was not helping either.
+* How was the architecture adjusted and why was it adjusted? I did include a couple of dropout layers. As mentioned before it did help to strenght the generalization of the model.
+* Which parameters were tuned? How were they adjusted and why? As mentioned before I used regularization to minimize the error, adding this to the optimizer. I did use regularization for the convolutional layers only. The learning rate was also reduce and the number of epocs increased.
+* What are some of the important design choices and why were they chosen? I did explain already the important and positive effects that Dropout and Regularization had in the model.
 
 ###Test a Model on New Images
 
