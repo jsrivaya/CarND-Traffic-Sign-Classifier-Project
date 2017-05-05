@@ -123,17 +123,21 @@ Bellow there is a couple of examples of how the support methods for data augment
 
 My final model consisted of the following layers:
 
-| Layer         		|     Description	        					| 
+| Layer         	      	|     Description	        				                 	| 
 |:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
-| RELU					|												|
-| Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    |       									|
-| Fully connected		|         									|
-| Softmax				|         									|
-|						|												|
-|						|												|
+| Input         		      | 32x32x3 RGB image   							                   | 
+| Convolution 3x3     	 | 1x1 stride, same padding, outputs 32x32x64 	  |
+| RELU					             | Activation	                                 		|
+| Max pooling	      	   | Input = 28x28x6, 2x2 stride, Output = 14x14x6 |
+| Convolution 3x3	      | Output = 10x10x16.                   									|
+| RELU					             | Activation	                                 		|
+| Max pooling	      	   | Input = 10x10x16, 2x2 stride, Output = 5x5x16	|
+| Fully connected		     |                                      									|
+| Dropout        		     | 80% chances of retention        								     	|
+| Fully connected		     |                                      									|
+| Dropout        		     | 80% chances of retention             									|
+| Fully connected		     |                                      									|
+
  
 
 * The model was trained using a batch size of 128, and a total of 50 EPOCHS.
